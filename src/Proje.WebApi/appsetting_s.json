@@ -1,0 +1,12 @@
+{
+  "ConnectionStrings": {
+    "SqlServer": "Data Source=ServerName;Initial Catalog=DBName;User ID=UserName;Password=Password;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
