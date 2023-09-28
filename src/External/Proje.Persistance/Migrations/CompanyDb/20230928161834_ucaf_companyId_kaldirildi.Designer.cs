@@ -12,8 +12,8 @@ using Proje.Persistance.Context;
 namespace Proje.Persistance.Migrations.CompanyDb
 {
     [DbContext(typeof(CompanyDbContext))]
-    [Migration("20230928003349_init")]
-    partial class init
+    [Migration("20230928161834_ucaf_companyId_kaldirildi")]
+    partial class ucaf_companyId_kaldirildi
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,10 +31,6 @@ namespace Proje.Persistance.Migrations.CompanyDb
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -57,7 +53,7 @@ namespace Proje.Persistance.Migrations.CompanyDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("UniformCartOdAccounts", (string)null);
+                    b.ToTable("UniformCartOfAccounts", (string)null);
                 });
 #pragma warning restore 612, 618
         }

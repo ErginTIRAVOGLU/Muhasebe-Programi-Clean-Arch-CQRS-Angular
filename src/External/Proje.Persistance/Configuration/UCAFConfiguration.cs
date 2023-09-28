@@ -14,7 +14,7 @@ namespace Proje.Persistance.Configuration
     {
         public void Configure(EntityTypeBuilder<UniformCartOfAccount> builder)
         {
-            builder.ToTable(TableNames.UniformCartOdAccounts);
+            builder.ToTable(TableNames.UniformCartOfAccounts);
             builder.HasKey(p => p.Id);
         }
     }

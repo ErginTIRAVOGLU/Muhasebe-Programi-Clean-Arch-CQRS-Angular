@@ -1,61 +1,18 @@
-using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
-using Proje.Application.Services.AppServices;
+using Microsoft.AspNetCore.Identity;
 using Proje.Domain.AppEntities.Identity;
-using Proje.Persistance.Context;
-using Proje.Persistance.Services.AppServices;
-using Proje.Presentation;
+using Proje.WebApi.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"))
-);
+builder.Services
+    .InstallServices(
+    builder.Configuration, typeof(IServiceInstaller).Assembly);
 
-builder.Services.AddIdentity<AppUser,AppRole>()
-        .AddEntityFrameworkStores<AppDbContext>();
 
-builder.Services.AddScoped<ICompanyService, CompanyService>();
 
-builder.Services.AddMediatR(cfg => 
-    cfg.RegisterServicesFromAssembly(typeof(Proje.Application.AssemblyReference).Assembly));
 
-builder.Services.AddAutoMapper(typeof(Proje.Persistance.AssemblyReference).Assembly);
 
-builder.Services.AddControllers()
-    .AddApplicationPart(typeof(AssemblyReference).Assembly);
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(setup=>
-    {
-        var jwtSecurityScheme = new OpenApiSecurityScheme
-        {
-            BearerFormat = "JWT",
-            Name = "JWT Authentication",
-            In = ParameterLocation.Header,
-            Type = SecuritySchemeType.Http,
-            Scheme = JwtBearerDefaults.AuthenticationScheme,
-            Description = "Put **_ONLY_** your JWT Bearer token on textbox below!",
-
-            Reference = new OpenApiReference
-            {
-                Id = JwtBearerDefaults.AuthenticationScheme,
-                Type = ReferenceType.SecurityScheme
-            }
-        };
-        setup.AddSecurityDefinition(jwtSecurityScheme.Reference.Id, jwtSecurityScheme);
-
-        setup.AddSecurityRequirement(new OpenApiSecurityRequirement
-        {
-            { jwtSecurityScheme, Array.Empty<string>() }
-        });
-    });
 
 var app = builder.Build();
 
@@ -68,8 +25,26 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+using (var scoped = app.Services.CreateScope())
+{
+    var userManager = scoped.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
+    if(!userManager.Users.Any())
+    {
+        userManager.CreateAsync(new AppUser
+        {
+            UserName = "ergint",
+            Email = "ergint@example.com",
+            Id = Guid.NewGuid().ToString(),
+            Name="Ergin",
+            Surname="T"
+        },"Password12*").Wait();
+    }
+}
+
+
+    app.Run();

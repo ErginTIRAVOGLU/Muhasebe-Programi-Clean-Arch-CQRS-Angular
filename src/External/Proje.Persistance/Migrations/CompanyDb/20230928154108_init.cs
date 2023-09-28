@@ -12,7 +12,7 @@ namespace Proje.Persistance.Migrations.CompanyDb
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "UniformCartOdAccounts",
+                name: "UniformCartOfAccounts",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -26,7 +26,7 @@ namespace Proje.Persistance.Migrations.CompanyDb
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UniformCartOdAccounts", x => x.Id);
+                    table.PrimaryKey("PK_UniformCartOfAccounts", x => x.Id);
                 });
         }
 
@@ -34,7 +34,7 @@ namespace Proje.Persistance.Migrations.CompanyDb
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UniformCartOdAccounts");
+                name: "UniformCartOfAccounts");
         }
     }
 }

@@ -8,5 +8,10 @@
       "Microsoft.AspNetCore": "Warning"
     }
   },
-  "AllowedHosts": "*"
+  "AllowedHosts": "*",
+  "Jwt": {
+    "Issuer": "www.Issuer.com",
+    "Audience": "www.Audience.com",
+    "SecretKey": "This is SecretKey, This is SecretKey,This is SecretKey,This is SecretKey,This is SecretKey,This is SecretKey."
+  }
 }
