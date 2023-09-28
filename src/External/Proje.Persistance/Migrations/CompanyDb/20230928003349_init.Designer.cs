@@ -12,8 +12,8 @@ using Proje.Persistance.Context;
 namespace Proje.Persistance.Migrations.CompanyDb
 {
     [DbContext(typeof(CompanyDbContext))]
-    [Migration("20230927210545_Company_database_created")]
-    partial class Company_database_created
+    [Migration("20230928003349_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

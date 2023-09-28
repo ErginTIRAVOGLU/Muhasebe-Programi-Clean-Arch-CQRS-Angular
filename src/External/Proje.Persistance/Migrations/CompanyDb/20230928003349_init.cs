@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Proje.Persistance.Migrations.CompanyDb
 {
     /// <inheritdoc />
-    public partial class Company_database_created : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

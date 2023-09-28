@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Proje.Domain.Abstractions;
 using Proje.Domain.AppEntities;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Proje.Persistance.Context
     {
         private string ConnectionString = "";
 
-        public CompanyDbContext(string companyId, Company company=null)
+        public CompanyDbContext(Company company=null)
         {               
             if(company !=null)
             { 
@@ -60,8 +61,27 @@ namespace Proje.Persistance.Context
         {
             public CompanyDbContext CreateDbContext(string[] args)
             {
-                return new CompanyDbContext("");
+                return new CompanyDbContext();
             }
+        }
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var entries = ChangeTracker.Entries<Entity>();
+            foreach (var entry in entries)
+            {
+                if (entry.State == EntityState.Added)
+                {
+                    entry.Property(p => p.CreatedDate)
+                        .CurrentValue = DateTime.Now;
+                }
+
+                if (entry.State == EntityState.Modified)
+                {
+                    entry.Property(p => p.UpdatedDate)
+                        .CurrentValue = DateTime.Now;
+                }
+            }
+            return base.SaveChangesAsync(cancellationToken);
         }
     }
 }

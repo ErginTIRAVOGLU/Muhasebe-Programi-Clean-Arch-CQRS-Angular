@@ -1,9 +1,12 @@
-
-
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Proje.Application.Services.AppServices;
+using Proje.Domain.AppEntities.Identity;
 using Proje.Persistance.Context;
+using Proje.Persistance.Services.AppServices;
 using Proje.Presentation;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +16,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"))
 );
+
+builder.Services.AddIdentity<AppUser,AppRole>()
+        .AddEntityFrameworkStores<AppDbContext>();
+
+builder.Services.AddScoped<ICompanyService, CompanyService>();
+
+builder.Services.AddMediatR(cfg => 
+    cfg.RegisterServicesFromAssembly(typeof(Proje.Application.AssemblyReference).Assembly));
+
+builder.Services.AddAutoMapper(typeof(Proje.Persistance.AssemblyReference).Assembly);
 
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(AssemblyReference).Assembly);

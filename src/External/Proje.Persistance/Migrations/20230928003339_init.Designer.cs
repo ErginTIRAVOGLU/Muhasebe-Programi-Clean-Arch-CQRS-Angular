@@ -12,7 +12,7 @@ using Proje.Persistance.Context;
 namespace Proje.Persistance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230927195245_init")]
+    [Migration("20230928003339_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -137,41 +137,49 @@ namespace Proje.Persistance.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("DatabaseName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IdentityNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TaxDepartment")
+                    b.Property<string>("ServerName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ServerPassword")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TaxDepartment")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TaxNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Tel")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
