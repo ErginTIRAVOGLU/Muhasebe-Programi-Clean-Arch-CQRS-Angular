@@ -1,15 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Proje.Domain.Abstractions;
 using Proje.Domain.AppEntities;
 using Proje.Domain.AppEntities.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proje.Persistance.Context
 {
@@ -22,9 +18,15 @@ namespace Proje.Persistance.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Ignore<IdentityUserLogin<string>>();
+            builder.Ignore<IdentityUserRole<string>>();
+            builder.Ignore<IdentityUserClaim<string>>();
+            builder.Ignore<IdentityRoleClaim<string>>();
+            builder.Ignore<IdentityUserToken<string>>();
+
             builder.Entity<Company>().HasQueryFilter(b => !b.DeletedDate.HasValue);
             builder.Entity<UserAndCompanyRelationship>().HasQueryFilter(b => !b.DeletedDate.HasValue);
-            base.OnModelCreating(builder);
+            
         }
 
         public DbSet<Company> Companies { get; set; }
@@ -59,6 +61,9 @@ namespace Proje.Persistance.Context
             }
             return base.SaveChangesAsync(cancellationToken);
         }
+
+
+        
 
         public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
         {

@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
 using Proje.Application.Features.AppFeatures.CompanyFeatures.Commands.CreateCompany;
+using Proje.Application.Features.AppFeatures.RoleFeatures.Commands.CreateRole;
 using Proje.Application.Features.CompanyFeatures.UCAFFeatures.Commands.CreateUCAF;
 using Proje.Domain.AppEntities;
+using Proje.Domain.AppEntities.Identity;
 using Proje.Domain.CompanyEntities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proje.Persistance.Mapping
 {
@@ -17,6 +14,8 @@ namespace Proje.Persistance.Mapping
         {
             CreateMap<CreateCompanyRequest, Company>().ReverseMap();
             CreateMap<CreateUCAFRequest, UniformCartOfAccount>().ReverseMap();
+
+            CreateMap<CreateRoleRequest,AppRole>().ReverseMap();
         }
     }
 }

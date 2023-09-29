@@ -3,11 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Proje.Application.Features.AppFeatures.CompanyFeatures.Commands.CreateCompany;
 using Proje.Application.Features.AppFeatures.CompanyFeatures.Commands.MigrateCompanyDatabase;
 using Proje.Presentation.Abstraction;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proje.Presentation.Controller
 {

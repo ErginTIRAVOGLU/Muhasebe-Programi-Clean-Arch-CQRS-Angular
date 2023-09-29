@@ -1,11 +1,6 @@
 ﻿using Proje.Domain.Abstractions;
 using Proje.Domain.AppEntities.Identity;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proje.Domain.AppEntities
 {

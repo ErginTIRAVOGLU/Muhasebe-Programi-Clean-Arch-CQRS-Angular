@@ -1,11 +1,5 @@
 ﻿using MediatR;
 using Proje.Application.Services.CompanyServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proje.Application.Features.CompanyFeatures.UCAFFeatures.Commands.CreateUCAF
 {

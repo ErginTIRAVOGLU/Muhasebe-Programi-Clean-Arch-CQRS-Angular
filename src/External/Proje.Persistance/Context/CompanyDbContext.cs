@@ -2,11 +2,6 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Proje.Domain.Abstractions;
 using Proje.Domain.AppEntities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proje.Persistance.Context
 {

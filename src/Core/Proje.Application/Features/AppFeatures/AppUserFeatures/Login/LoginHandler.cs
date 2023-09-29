@@ -3,11 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Proje.Application.Abstractions;
 using Proje.Domain.AppEntities.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proje.Application.Features.AppFeatures.AppUserFeatures.Login
 {

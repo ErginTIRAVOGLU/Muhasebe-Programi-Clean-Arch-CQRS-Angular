@@ -4,11 +4,6 @@ using Proje.Application.Features.AppFeatures.CompanyFeatures.Commands.CreateComp
 using Proje.Application.Services.AppServices;
 using Proje.Domain.AppEntities;
 using Proje.Persistance.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proje.Persistance.Services.AppServices
 {

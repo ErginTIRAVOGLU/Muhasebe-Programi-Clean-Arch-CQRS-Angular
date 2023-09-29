@@ -5,12 +5,6 @@ using Proje.Domain;
 using Proje.Domain.CompanyEntities;
 using Proje.Domain.Repositories.UCAFRepositories;
 using Proje.Persistance.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proje.Persistance.Services.CompanyServices
 {
