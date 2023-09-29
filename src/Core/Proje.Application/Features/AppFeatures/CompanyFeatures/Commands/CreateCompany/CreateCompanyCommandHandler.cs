@@ -18,7 +18,7 @@ namespace Proje.Application.Features.AppFeatures.CompanyFeatures.Commands.Create
         {
             Company company = await _companyService.GetCompanyByName(request.Name);
             if (company != null) { throw new Exception("Bu şirket kayıtlı"); }
-            await _companyService.CreateCompany(request);
+            await _companyService.CreateCompany(request,cancellationToken);
             return new();
         }
     }

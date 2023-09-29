@@ -24,16 +24,16 @@ namespace Proje.Persistance.Services.CompanyServices
             _mapper = mapper;
         }
 
-        public async Task CreateUcafAsync(CreateUCAFCommand request)
+        public async Task CreateUcafAsync(CreateUCAFCommand request, CancellationToken cancellationToken)
         {
             _context = (CompanyDbContext)_contextService.CreateDbContextInstance(request.CompanyId);
             _commandRepository.SetDbContextInstance(_context);
             _unitOfWork.SetDbContextInstance(_context);
             
             UniformCartOfAccount uniformCartOfAccount = _mapper.Map<UniformCartOfAccount>(request);
-            await _commandRepository.AddAsync(uniformCartOfAccount);
+            await _commandRepository.AddAsync(uniformCartOfAccount,cancellationToken);
 
-            await _unitOfWork.SaveChangeAsync();
+            await _unitOfWork.SaveChangeAsync(cancellationToken);
 
         }
     }

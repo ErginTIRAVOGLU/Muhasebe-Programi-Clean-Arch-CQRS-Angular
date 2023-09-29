@@ -15,7 +15,7 @@ namespace Proje.Application.Features.CompanyFeatures.UCAFFeatures.Commands.Creat
 
         public async Task<CreateUCAFCommandResponse> Handle(CreateUCAFCommand request, CancellationToken cancellationToken)
         {
-            await _ucafService.CreateUcafAsync(request);
+            await _ucafService.CreateUcafAsync(request,cancellationToken);
             return new();
         }
     }

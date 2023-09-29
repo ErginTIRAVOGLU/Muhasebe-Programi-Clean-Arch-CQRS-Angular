@@ -13,9 +13,9 @@ namespace Proje.Presentation.Controller
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateCompany(CreateCompanyCommand request)
+        public async Task<IActionResult> CreateCompany(CreateCompanyCommand request, CancellationToken cancellationToken)
         {
-            CreateCompanyCommandResponse response = await _mediator.Send(request);
+            CreateCompanyCommandResponse response = await _mediator.Send(request, cancellationToken);
             return Ok(response);
         }
 
@@ -26,5 +26,25 @@ namespace Proje.Presentation.Controller
             MigrateCompanyDatabaseCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
+
+        /*
+        [HttpGet("[action]")]
+        public async Task<IActionResult> CheckCancellationToken(CancellationToken cancellationToken)
+        {
+            try
+            {
+                await Task.Delay(10000,cancellationToken);
+                Console.WriteLine("Cancellation Token çalışmadı. İşlem tamamlandı");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Cancellation Token çalıştı. İşlem iptal edildi.");
+                throw;
+            }
+            
+            
+            return NoContent();
+        }
+        */
     }
 }
