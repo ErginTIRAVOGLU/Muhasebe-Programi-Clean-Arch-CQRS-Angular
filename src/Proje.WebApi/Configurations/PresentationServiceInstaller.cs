@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
+using Proje.WebApi.Middleware;
 
 namespace Proje.WebApi.Configurations
 {
@@ -7,6 +8,7 @@ namespace Proje.WebApi.Configurations
     {
         public void Install(IServiceCollection services, IConfiguration configuration)
         {
+            services.AddScoped<ExceptionMiddleware>();
 
             services.AddControllers()
                 .AddApplicationPart(typeof(Proje.Presentation.AssemblyReference).Assembly);

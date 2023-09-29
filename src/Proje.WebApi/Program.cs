@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Proje.Domain.AppEntities.Identity;
 using Proje.WebApi.Configurations;
+using Proje.WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +23,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseExceptionMiddleware();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
