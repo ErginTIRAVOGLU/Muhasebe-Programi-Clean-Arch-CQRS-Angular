@@ -8,7 +8,7 @@ namespace Proje.Application.Features.AppFeatures.CompanyFeatures.Commands.Create
          string ServerName, 
          string DatabaseName, 
          string UserName, 
-         string ServerPassword) :ICommand<CreateCompanyCommandResponse>
+         string ServerPassword) :ICommand<CreateCompanyCommandResponse>;
     
          
 }
