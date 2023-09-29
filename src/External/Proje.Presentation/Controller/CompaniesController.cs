@@ -13,17 +13,17 @@ namespace Proje.Presentation.Controller
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateCompany(CreateCompanyRequest request)
+        public async Task<IActionResult> CreateCompany(CreateCompanyCommand request)
         {
-            CreateCompanyResponse response = await _mediator.Send(request);
+            CreateCompanyCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
 
         [HttpGet("[action]")]
         public async Task<IActionResult> MigrateCompanyDatabases()
         {
-            MigrateCompanyDatabaseRequest request = new();
-            MigrateCompanyDatabaseResponse response = await _mediator.Send(request);
+            MigrateCompanyDatabaseCommand request = new();
+            MigrateCompanyDatabaseCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
     }

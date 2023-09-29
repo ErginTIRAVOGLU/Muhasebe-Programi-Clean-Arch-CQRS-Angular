@@ -12,10 +12,10 @@ namespace Proje.Persistance.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<CreateCompanyRequest, Company>().ReverseMap();
-            CreateMap<CreateUCAFRequest, UniformCartOfAccount>().ReverseMap();
+            CreateMap<CreateCompanyCommand, Company>().ReverseMap();
+            CreateMap<CreateUCAFCommand, UniformCartOfAccount>().ReverseMap();
 
-            CreateMap<CreateRoleRequest,AppRole>().ReverseMap();
+            CreateMap<CreateRoleCommand,AppRole>().ReverseMap();
         }
     }
 }
