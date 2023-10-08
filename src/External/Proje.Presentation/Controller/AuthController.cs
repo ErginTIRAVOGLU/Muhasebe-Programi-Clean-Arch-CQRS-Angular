@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Proje.Application.Features.AppFeatures.AppUserFeatures.Login;
+using Proje.Application.Features.AppFeatures.AppUserFeatures.Commands.Login;
 using Proje.Presentation.Abstraction;
 
 namespace Proje.Presentation.Controller

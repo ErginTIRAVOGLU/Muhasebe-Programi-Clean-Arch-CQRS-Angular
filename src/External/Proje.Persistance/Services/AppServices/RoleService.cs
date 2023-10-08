@@ -24,6 +24,15 @@ namespace Proje.Persistance.Services.AppServices
             await _roleManager.CreateAsync(role);
         }
 
+        public async Task AddRangeAsync(IEnumerable<AppRole> roles)
+        {
+            foreach (var role in roles)
+            {
+                await _roleManager.CreateAsync(role);
+            }
+            
+        }
+
         public async Task DeleteAsync(AppRole appRole)
         {            
             await _roleManager.DeleteAsync(appRole);

@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Proje.Application.Messaging;
+﻿using Proje.Application.Messaging;
 using Proje.Application.Services.AppServices;
 using Proje.Domain.AppEntities;
 
@@ -18,6 +17,7 @@ namespace Proje.Application.Features.AppFeatures.CompanyFeatures.Commands.Create
         {
             Company company = await _companyService.GetCompanyByName(request.Name);
             if (company != null) { throw new Exception("Bu şirket kayıtlı"); }
+            
             await _companyService.CreateCompany(request,cancellationToken);
             return new();
         }

@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Proje.Application.Messaging;
+﻿using Proje.Application.Messaging;
 
 namespace Proje.Application.Features.AppFeatures.RoleFeatures.Commands.DeleteRole
 {

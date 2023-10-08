@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Proje.Application.Messaging;
+﻿using Proje.Application.Messaging;
 using Proje.Application.Services.AppServices;
 using Proje.Domain.AppEntities.Identity;
 
