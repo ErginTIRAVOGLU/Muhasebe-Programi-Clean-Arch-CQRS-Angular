@@ -185,7 +185,7 @@ namespace Proje.Persistance.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsRoleCreatedById")
+                    b.Property<bool>("IsRoleCreatedByAdmin")
                         .HasColumnType("bit");
 
                     b.Property<string>("Title")

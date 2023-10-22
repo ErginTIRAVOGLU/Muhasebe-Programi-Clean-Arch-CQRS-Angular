@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Proje.Application.Features.AppFeatures.CompanyFeatures.Commands.CreateCompany;
 using Proje.Application.Features.AppFeatures.CompanyFeatures.Commands.MigrateCompanyDatabase;
+using Proje.Application.Features.AppFeatures.CompanyFeatures.Queries.GetAllCompany;
 using Proje.Presentation.Abstraction;
 
 namespace Proje.Presentation.Controller
@@ -27,24 +28,12 @@ namespace Proje.Presentation.Controller
             return Ok(response);
         }
 
-        /*
         [HttpGet("[action]")]
-        public async Task<IActionResult> CheckCancellationToken(CancellationToken cancellationToken)
+        public async Task<IActionResult> GetAllCompany()
         {
-            try
-            {
-                await Task.Delay(10000,cancellationToken);
-                Console.WriteLine("Cancellation Token çalışmadı. İşlem tamamlandı");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Cancellation Token çalıştı. İşlem iptal edildi.");
-                throw;
-            }
-            
-            
-            return NoContent();
+            GetAllCompanyQuery request = new();
+            GetAllCompanyQueryResponse response = await _mediator.Send(request);
+            return Ok(response);
         }
-        */
     }
 }

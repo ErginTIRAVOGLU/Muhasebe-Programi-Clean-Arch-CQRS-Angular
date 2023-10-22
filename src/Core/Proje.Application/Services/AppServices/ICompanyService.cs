@@ -8,5 +8,6 @@ namespace Proje.Application.Services.AppServices
         Task CreateCompany(CreateCompanyCommand request, CancellationToken cancellationToken);
         Task<Company?> GetCompanyByName(string name);
         Task MigrateCompanyDatabase();
+        IQueryable<Company> GetAll();
     }
 }

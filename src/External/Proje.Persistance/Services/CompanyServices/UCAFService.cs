@@ -42,7 +42,7 @@ namespace Proje.Persistance.Services.CompanyServices
 
         public async Task<UniformCartOfAccount> GetByCode(string code)
         {
-            return await _queryRepository.GetFirstByExpiression(m => m.Code == code);
+            return await _queryRepository.GetFirstByExpiression(m => m.Code == code,default);
         }
     }
 }

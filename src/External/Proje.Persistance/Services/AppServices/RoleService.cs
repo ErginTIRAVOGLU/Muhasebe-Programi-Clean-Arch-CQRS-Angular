@@ -29,8 +29,7 @@ namespace Proje.Persistance.Services.AppServices
             foreach (var role in roles)
             {
                 await _roleManager.CreateAsync(role);
-            }
-            
+            }            
         }
 
         public async Task DeleteAsync(AppRole appRole)

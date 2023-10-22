@@ -1,4 +1,4 @@
-﻿using Proje.Application.Services.AppServices;
+using Proje.Application.Services.AppServices;
 using Proje.Application.Services.CompanyServices;
 using Proje.Domain;
 using Proje.Persistance.Services.AppServices;
@@ -10,6 +10,11 @@ using Proje.Domain.Repositories.AppDbContext.CompanyRepositories;
 using Proje.Persistance.Repositories.AppDbContext.CompanyRepositories;
 using Proje.Domain.UnitOfWorks;
 using Proje.Persistance.UnitOfWorks;
+using Proje.Domain.Repositories.AppDbContext.MainRoleRepositories;
+using Proje.Persistance.Repositories.AppDbContext.MainRoleRepositories;
+using Proje.Domain.Repositories.AppDbContext.MainRoleAndRoleRelationshipRepositories;
+using Proje.Persistance.Repositories.AppDbContext.MainRoleAndRoleRelationshipRepositories;
+//UsingSpot
 
 namespace Proje.WebApi.Configurations
 {
@@ -26,25 +31,37 @@ namespace Proje.WebApi.Configurations
             #region Services
                 #region CompanyDbContext
                 services.AddScoped<IUCAFService, UCAFService>();
+                //CompanyServiceDISpot
                 #endregion
-            
+
                 #region AppDbContext
                 services.AddScoped<ICompanyService, CompanyService>();
                 services.AddScoped<IRoleService, RoleService>();
+                services.AddScoped<IMainRoleService, MainRoleService>();
+                services.AddScoped<IMainRoleAndRoleRelationshipService, MainRoleAndRoleRelationshipService>();
+                //AppServiceDISpot
                 #endregion
             #endregion
 
 
             #region Repositories
-            #region CompanyDbContext            
-            services.AddScoped<IUCAFCommandRepository, UCAFCommandRepository>();
+                #region CompanyDbContext            
+                services.AddScoped<IUCAFCommandRepository, UCAFCommandRepository>();
                 services.AddScoped<IUCAFQueryRepository, UCAFQueryRepository>();
+                //CompanyRepositoryDISpot
                 #endregion
 
                 #region AppDbContext
                 services.AddScoped<ICompanyCommandRepository, CompanyCommandRepository>();
                 services.AddScoped<ICompanyQueryRepository, CompanyQueryRepository>();
-                #endregion
+                
+                services.AddScoped<IMainRoleCommandRepository, MainRoleCommandRepository>();
+                services.AddScoped<IMainRoleQueryRepository, MainRoleQueryRepository>();
+                
+                services.AddScoped<IMainRoleAndRoleRelationshipCommandRepository, MainRoleAndRoleRelationshipCommandRepository>();
+                services.AddScoped<IMainRoleAndRoleRelationshipQueryRepository, MainRoleAndRoleRelationshipQueryRepository>();
+                //AppRepositoryDISpot
+            #endregion
             #endregion
 
         }

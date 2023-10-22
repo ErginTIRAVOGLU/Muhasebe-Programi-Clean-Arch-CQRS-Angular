@@ -33,9 +33,14 @@ namespace Proje.Persistance.Services.AppServices
             await _appUnitOfWork.SaveChangesAsync(cancellationToken);
         }
 
+        public IQueryable<Company> GetAll()
+        {
+            return _companyQueryRepository.GetAll();
+        }
+
         public async Task<Company?> GetCompanyByName(string name)
         {
-            return await _companyQueryRepository.GetFirstByExpiression(p => p.Name == name);
+            return await _companyQueryRepository.GetFirstByExpiression(p => p.Name == name,default);
         }
 
         public async Task MigrateCompanyDatabase()

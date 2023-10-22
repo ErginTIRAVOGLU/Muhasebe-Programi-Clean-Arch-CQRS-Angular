@@ -1,4 +1,5 @@
-﻿using Proje.Domain.AppEntities.Identity;
+﻿using Proje.Domain.AppEntities;
+using Proje.Domain.AppEntities.Identity;
 
 namespace Proje.Domain.Roles
 {
@@ -32,6 +33,26 @@ namespace Proje.Domain.Roles
              ));
 
             return appRoles;
+        }
+
+        public static List<MainRole>GetStaticMainRoles()
+        {
+            List<MainRole> mainRoles = new List<MainRole>
+            {
+                new MainRole(id:Guid.NewGuid().ToString(),
+                title:"Admin",
+                isRoleCreatedByAdmin: true),
+
+                new MainRole(id:Guid.NewGuid().ToString(),
+                title:"Yönetici",
+                isRoleCreatedByAdmin: true),
+
+                new MainRole(id:Guid.NewGuid().ToString(),
+                title:"Kullanıcı",
+                isRoleCreatedByAdmin: true),
+            };
+
+            return mainRoles;
         }
 
         #region RoleTitleNames
