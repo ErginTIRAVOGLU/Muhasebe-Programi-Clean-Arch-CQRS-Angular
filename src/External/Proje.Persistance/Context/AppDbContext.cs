@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Proje.Domain.Abstractions;
 using Proje.Domain.AppEntities;
 using Proje.Domain.AppEntities.Identity;
+using System.Reflection.Emit;
 
 namespace Proje.Persistance.Context
 {
@@ -25,14 +26,23 @@ namespace Proje.Persistance.Context
             builder.Ignore<IdentityUserToken<string>>();
 
             builder.Entity<Company>().HasQueryFilter(b => !b.DeletedDate.HasValue);
+            builder.Entity<MainRole>().HasQueryFilter(b => !b.DeletedDate.HasValue);
+             
+            builder.Entity<MainRoleAndRoleRelationship>().HasQueryFilter(b => !b.DeletedDate.HasValue);            
             builder.Entity<UserAndCompanyRelationship>().HasQueryFilter(b => !b.DeletedDate.HasValue);
-            
+            builder.Entity<MainRoleAndUserRelationship>().HasQueryFilter(b => !b.DeletedDate.HasValue);
+
+            builder.Entity<MainRoleAndUserRelationship>().HasOne(m => m.MainRole)
+                .WithOne().OnDelete(DeleteBehavior.ClientNoAction);
+          
         }
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<MainRole> MainRoles{ get; set; }
         public DbSet<MainRoleAndRoleRelationship> MainRoleAndRoleRelationships { get; set; }
         public DbSet<UserAndCompanyRelationship> UserAndCompanyRelationships { get; set; }
+        public DbSet<MainRoleAndUserRelationship> MainRoleAndUserRelationships { get; set; }
+
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

@@ -14,6 +14,10 @@ using Proje.Domain.Repositories.AppDbContext.MainRoleRepositories;
 using Proje.Persistance.Repositories.AppDbContext.MainRoleRepositories;
 using Proje.Domain.Repositories.AppDbContext.MainRoleAndRoleRelationshipRepositories;
 using Proje.Persistance.Repositories.AppDbContext.MainRoleAndRoleRelationshipRepositories;
+using Proje.Domain.Repositories.AppDbContext.UserAndCompanyRelationshipRepositories;
+using Proje.Persistance.Repositories.AppDbContext.UserAndCompanyRelationshipRepositories;
+using Proje.Domain.Repositories.AppDbContext.MainRoleAndUserRelationshipRepositories;
+using Proje.Persistance.Repositories.AppDbContext.MainRoleAndUserRelationshipRepositories;
 //UsingSpot
 
 namespace Proje.WebApi.Configurations
@@ -39,6 +43,8 @@ namespace Proje.WebApi.Configurations
                 services.AddScoped<IRoleService, RoleService>();
                 services.AddScoped<IMainRoleService, MainRoleService>();
                 services.AddScoped<IMainRoleAndRoleRelationshipService, MainRoleAndRoleRelationshipService>();
+                services.AddScoped<IUserAndCompanyRelationshipService, UserAndCompanyRelationshipService>();
+            services.AddScoped<IMainRoleAndUserRelationshipService, MainRoleAndUserRelationshipService>();
                 //AppServiceDISpot
                 #endregion
             #endregion
@@ -57,10 +63,14 @@ namespace Proje.WebApi.Configurations
                 
                 services.AddScoped<IMainRoleCommandRepository, MainRoleCommandRepository>();
                 services.AddScoped<IMainRoleQueryRepository, MainRoleQueryRepository>();
-                
+            
                 services.AddScoped<IMainRoleAndRoleRelationshipCommandRepository, MainRoleAndRoleRelationshipCommandRepository>();
                 services.AddScoped<IMainRoleAndRoleRelationshipQueryRepository, MainRoleAndRoleRelationshipQueryRepository>();
-                //AppRepositoryDISpot
+                services.AddScoped<IUserAndCompanyRelationshipCommandRepository, UserAndCompanyRelationshipCommandRepository>();
+                services.AddScoped<IUserAndCompanyRelationshipQueryRepository, UserAndCompanyRelationshipQueryRepository>();
+            services.AddScoped<IMainRoleAndUserRelationshipCommandRepository, MainRoleAndUserRelationshipCommandRepository>();
+            services.AddScoped<IMainRoleAndUserRelationshipQueryRepository, MainRoleAndUserRelationshipQueryRepository>();
+            //AppRepositoryDISpot
             #endregion
             #endregion
 
