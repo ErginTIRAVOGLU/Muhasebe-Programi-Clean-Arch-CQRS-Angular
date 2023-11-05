@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Proje.Application.Services.AppServices;
 using Proje.Domain.AppEntities;
 using Proje.Domain.Repositories.AppDbContext.MainRoleAndRoleRelationshipRepositories;
@@ -32,6 +33,11 @@ public class MainRoleAndRoleRelationshipService : IMainRoleAndRoleRelationshipSe
     public async Task<MainRoleAndRoleRelationship> GetByIdAsync(string id)
     {
         return await _queryRepository.GetById(id);
+    }
+
+    public async Task<IList<MainRoleAndRoleRelationship>> GetListByMainRoleIdForGetRolesAsync(string id)
+    {
+        return await _queryRepository.GetWhere(p=>p.MainRoleId == id).Include(x=>x.AppRole).ToListAsync();
     }
 
     public async Task<MainRoleAndRoleRelationship> GetByRoleIdAndMainRoleId(string roleId, string mainRoleId, CancellationToken cancellationToken = default)

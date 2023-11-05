@@ -1,4 +1,5 @@
-﻿using Proje.Application.Services.AppServices;
+﻿using Microsoft.EntityFrameworkCore;
+using Proje.Application.Services.AppServices;
 using Proje.Domain.AppEntities;
 using Proje.Domain.Repositories.AppDbContext.UserAndCompanyRelationshipRepositories;
 using Proje.Domain.UnitOfWorks;
@@ -37,6 +38,11 @@ namespace Proje.Persistance.Services.AppServices
         public async Task<UserAndCompanyRelationship> GetByUserIdAndCompanyId(string userId, string companyId, CancellationToken cancellationToken)
         {
             return await _queryRepository.GetFirstByExpiression(p => p.AppUserId == userId && p.CompanyId == companyId, cancellationToken);
+        }
+
+        public async Task<IList<UserAndCompanyRelationship>> GetListByUserIdAsync(string userId)
+        {
+            return await _queryRepository.GetWhere(p => p.AppUserId == userId).Include(x=>x.Company).ToListAsync();
         }
 
         public async Task RemoveByIdAsync(string id)

@@ -43,6 +43,8 @@ namespace Proje.Persistance.Services.AppServices
             return await _companyQueryRepository.GetFirstByExpiression(p => p.Name == name,default);
         }
 
+        
+
         public async Task MigrateCompanyDatabase()
         {
             var companies = await _companyQueryRepository.GetAll().ToListAsync();

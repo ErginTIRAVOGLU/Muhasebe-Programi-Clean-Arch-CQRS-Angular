@@ -44,7 +44,8 @@ namespace Proje.WebApi.Configurations
                 services.AddScoped<IMainRoleService, MainRoleService>();
                 services.AddScoped<IMainRoleAndRoleRelationshipService, MainRoleAndRoleRelationshipService>();
                 services.AddScoped<IUserAndCompanyRelationshipService, UserAndCompanyRelationshipService>();
-            services.AddScoped<IMainRoleAndUserRelationshipService, MainRoleAndUserRelationshipService>();
+                services.AddScoped<IMainRoleAndUserRelationshipService, MainRoleAndUserRelationshipService>();
+                services.AddScoped<IAuthService, AuthService>();
                 //AppServiceDISpot
                 #endregion
             #endregion

@@ -9,5 +9,6 @@ namespace Proje.Application.Services.AppServices
         Task<Company?> GetCompanyByName(string name);
         Task MigrateCompanyDatabase();
         IQueryable<Company> GetAll();
+       
     }
 }

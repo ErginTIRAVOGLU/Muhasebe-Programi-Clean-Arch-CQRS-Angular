@@ -1,9 +1,10 @@
 ﻿using Proje.Domain.AppEntities.Identity;
+using Proje.Domain.Dtos;
 
 namespace Proje.Application.Abstractions
 {
     public interface IJwtProvider
     {
-        Task<string> CreateTokenAsync(AppUser user, List<string?> roles);
+        Task<TokenRefreshTokenDto> CreateTokenAsync(AppUser user);
     }
 }
