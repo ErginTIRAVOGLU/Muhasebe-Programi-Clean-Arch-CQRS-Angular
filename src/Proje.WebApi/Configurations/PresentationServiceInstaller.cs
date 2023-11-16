@@ -10,6 +10,11 @@ namespace Proje.WebApi.Configurations
         {
             services.AddScoped<ExceptionMiddleware>();
 
+            services.AddCors(options => options.AddDefaultPolicy(options =>
+            {
+                options.AllowAnyHeader().AllowAnyMethod().AllowCredentials().SetIsOriginAllowed(options => true);
+            }));
+            
             services.AddControllers()
                 .AddApplicationPart(typeof(Proje.Presentation.AssemblyReference).Assembly);
 

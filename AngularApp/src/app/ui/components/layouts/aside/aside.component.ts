@@ -1,0 +1,26 @@
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { LoginResponseModel } from '../../auth/models/login-response-model';
+import { Router, RouterModule } from '@angular/router';
+import { Navigation, Navigations } from 'src/app/ui/router/navbar.navigation';
+import { AuthService } from '../../auth/service/auth.service';
+
+@Component({
+  selector: 'app-aside',
+  standalone: true,
+  imports: [CommonModule,RouterModule],
+  templateUrl: './aside.component.html',
+  styleUrls: ['./aside.component.css']
+})
+export class AsideComponent {
+  @Input() loginResponse: LoginResponseModel = new LoginResponseModel();
+  navigations=Navigations;
+
+  constructor(
+     private _auth:AuthService
+  ){}
+
+  logout(){
+    this._auth.logout();
+  }
+}

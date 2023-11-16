@@ -9,12 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .InstallServices(
     builder.Configuration, typeof(IServiceInstaller).Assembly);
-
-
-
-
-
-
+ 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,6 +23,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseCors();
 
 app.MapControllers();
 

@@ -48,10 +48,12 @@
           <div class="row">
 
             <div class="col-12">
-              <button
-                type="submit"
-                class="btn btn-primary btn-block w-100"
-                [disabled]="!loginForm.valid">Giriş</button>
+              <app-loading-button
+                btnText="Giriş"
+                loadingButtonText="Giriş yapılıyor..."
+                [form]="loginForm"
+                [isloading]="isloading"
+              ></app-loading-button>
             </div>
             <!-- /.col -->
           </div>

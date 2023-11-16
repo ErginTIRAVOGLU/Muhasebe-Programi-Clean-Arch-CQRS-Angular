@@ -10,6 +10,7 @@ namespace Proje.Application.Features.AppFeatures.AuthFeautures.Commands.Login
         string Name,
         string Surname,
         IList<CompanyDto> Companies,
-        CompanyDto Company
+        CompanyDto Company,
+        int Year
         );
 }

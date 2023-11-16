@@ -54,7 +54,8 @@ namespace Proje.Application.Features.AppFeatures.AuthFeautures.Commands.Login
                 Name: user.Name,
                 Surname: user.Surname,
                 Companies: companyDtos,
-                Company: companyDtos[0]
+                Company: companyDtos[0],
+                Year:DateTime.Now.Year
             );
             return response;
 
